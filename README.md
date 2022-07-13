@@ -1,7 +1,24 @@
-# Vue 3 + Vite
+# BemPaggo form payment
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Primeiros Passos
 
-## Recommended IDE Setup
+* Clonar este repositório
+* Executar `npm install` para adicionar as dependências
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+## Sobre o projeto
+
+→ Escolher adesivos de tecnologias para compra;
+
+→ Preencher dados de cartão de crédito;
+
+→ Acesso em: https://bempaggo.surge.sh/
+
+🛠️ Tecnologias utilizadas:
+
+→ VueJs;
+
+→ HTML;
+
+→ CSS;
+
+→ JavaScript:
