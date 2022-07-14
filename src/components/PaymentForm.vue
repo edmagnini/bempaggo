@@ -3,7 +3,7 @@
     <div class="header-form">
       <p class="header-content">Formulário para compra de <b>Pacote de adesivos</b></p>
     </div>
-    <form id="payment-form">
+    <form id="payment-form" @submit="sendValues">
       <div class="input-container">
         <b>Quais adesivos:</b>
         <div class="sticker-checkbox-container">
@@ -32,15 +32,18 @@
         <div class="credit-card" v-show="this.payment === 'cartaoDeCredito'">
           <div class="card-data-input">
             <span>Número do cartão</span>
-            <input type="text" id="number" name="card-number" title="Digite os 16 números de seu cartão de crédito" pattern="/^(?:4[0-9]d{12}(?:[0-9]d{3})?|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{d12})$1/" v-model="cardNumber">
+            <input type="text" id="number" name="card-number" title="Digite os 16 números de seu cartão de crédito" pattern="/^(?:4[0-9]d{12}(?:[0-9]d{3})?|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{d12})$1/" v-model="cardNumber" placeholder="xxxx-xxxx-xxxx-xxxx">
             <span>Nome impresso</span>
-            <input type="text" id="name" name="card-name" v-model="cardName">
+            <input type="text" id="name" name="card-name" v-model="cardName" placeholder="Seu Nome">
+            <span>Data de vencimento</span>
+            <input type="text" id="name" name="cardExpData" v-model="cardExpData" placeholder="xx/xx">
             <span>Código de segurança</span>
-            <input type="text" id="cvv" name="card-cvv" v-model="cardCvv">
+            <input type="text" id="cvv" name="card-cvv" v-model="cardCvv" placeholder="xxx">
           </div>
           <div class="card-animation">
             <label>{{creditCardNumberRegex()}}</label>
-            <label>{{cardName}}</label>
+            <div style="display: flex; justify-content: space-evenly;"><label>{{cardName}}</label><label>{{cardExpData}}</label></div>
+            
           </div>
         </div>
         <b>Quantos adesivos de cada?:</b>
@@ -52,10 +55,10 @@
         <b>Observações:</b>
         <input type="text" id="obs" name="obs" v-model="obs" placeholder="Alguma dúvida? Recado?">
       </div>
-    </form>
     <div class="submit-button-container">
-        <button type="button" class="submit-button" @click="">ENVIAR</button>
+        <button type="submit" class="submit-button" @click="">ENVIAR</button>
     </div>
+    </form>
   </div>
 </template>
 
@@ -68,6 +71,8 @@ export default {
       payment: "",
       cardNumber: "",
       cardName: "",
+      cardExpData: "",
+      cardCvv: ""
     }
   },
   methods: {
@@ -82,6 +87,9 @@ export default {
       } else {
         this.count--
       }
+    },
+    async sendValues(e) {
+      alert("Compra realizada!")
     }
   },
   updated() {
@@ -109,7 +117,7 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     margin-left: 2vw;
-    gap: 10px;
+    gap: 5px;
   }
   .header-form{
     background-color: #2F3676;
